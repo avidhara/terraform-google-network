@@ -3,12 +3,9 @@
 ## Usage
 ```hcl
 module "vpc" {
-module "vpc" {
   source = "./"
   name = "terraform-vpc"
 }
-}
-
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -33,7 +30,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google_compute_network.network](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network) | resource |
+| [google_compute_network.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network) | resource |
 
 ## Inputs
 

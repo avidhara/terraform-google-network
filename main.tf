@@ -1,4 +1,4 @@
-resource "google_compute_network" "network" {
+resource "google_compute_network" "this" {
   count = var.create ? 1 : 0
 
   name                                      = var.name
