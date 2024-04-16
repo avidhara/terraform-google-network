@@ -62,5 +62,5 @@ variable "network_firewall_policy_enforcement_order" {
 variable "delete_default_routes_on_create" {
   type        = bool
   description = "(Optional) If set to true, default routes (0.0.0.0/0) will be deleted immediately after network creation. Defaults to false."
-  default     = false
+  default     = true
 }

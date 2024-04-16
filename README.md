@@ -3,10 +3,10 @@
 ## Usage
 ```hcl
 module "vpc" {
-    source  = "./"
-
-    project_id   = "xxxxxxx"
-    network_name = "example-vpc"
+module "vpc" {
+  source = "./"
+  name = "terraform-vpc"
+}
 }
 
 ```
@@ -41,7 +41,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_auto_create_subnetworks"></a> [auto\_create\_subnetworks](#input\_auto\_create\_subnetworks) | (Optional) When set to true, the network is created in "auto subnet mode" and it will create a subnet for each region automatically across the 10.128.0.0/9 address range. When set to false, the network is created in "custom subnet mode" so the user can explicitly connect subnetwork resources. | `bool` | `false` | no |
 | <a name="input_create"></a> [create](#input\_create) | (optional) Whether to create the network or not. Default is true. | `bool` | `true` | no |
-| <a name="input_delete_default_routes_on_create"></a> [delete\_default\_routes\_on\_create](#input\_delete\_default\_routes\_on\_create) | (Optional) If set to true, default routes (0.0.0.0/0) will be deleted immediately after network creation. Defaults to false. | `bool` | `false` | no |
+| <a name="input_delete_default_routes_on_create"></a> [delete\_default\_routes\_on\_create](#input\_delete\_default\_routes\_on\_create) | (Optional) If set to true, default routes (0.0.0.0/0) will be deleted immediately after network creation. Defaults to false. | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) An optional description of this resource. The resource must be recreated to modify this field. | `string` | `null` | no |
 | <a name="input_enable_ula_internal_ipv6"></a> [enable\_ula\_internal\_ipv6](#input\_enable\_ula\_internal\_ipv6) | (Optional) Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. | `bool` | `false` | no |
 | <a name="input_internal_ipv6_range"></a> [internal\_ipv6\_range](#input\_internal\_ipv6\_range) | (Optional) When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. | `string` | `null` | no |
