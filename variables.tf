@@ -63,3 +63,55 @@ variable "delete_default_routes_on_create" {
   description = "(Optional) If set to true, default routes (0.0.0.0/0) will be deleted immediately after network creation. Defaults to false."
   default     = true
 }
+
+#### Subnets ####
+
+variable "subnets" {
+  type = map(object({
+    name                       = string
+    ip_cidr_range              = string
+    network                    = optional(string)
+    description                = optional(string)
+    purpose                    = optional(string)
+    role                       = optional(string)
+    secondary_ip_range         = list(map(string))
+    private_ipv6_google_access = optional(string)
+    private_ip_google_access   = optional(bool)
+    region                     = string
+    log_config = optional(list(object({
+      aggregation_interval = optional(string)
+      flow_sampling        = optional(string)
+      metadata             = optional(string)
+      metadata_fields      = optional(list(string))
+      filter_expr          = optional(string)
+    })))
+    stack_type                       = optional(string)
+    ipv6_access_type                 = optional(string)
+    external_ipv6_prefix             = optional(string)
+    allow_subnet_cidr_routes_overlap = optional(bool)
+  }))
+  description = <<_EOT
+  (Optional) List of subnetworks. Each element must contain the following attributes:
+  - name: Name of the subnetwork.
+  - ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
+  - network: The network this subnet belongs to. If not provided, the network will be created in auto subnet mode.
+  - description: (Optional) An optional description of this resource. The resource must be recreated to modify this field.
+  - purpose: (Optional) The purpose of the resource. Possible values are: INTERNAL_HTTPS_LOAD_BALANCER, INTERNAL_TCP_UDP_LOAD_BALANCER, PRIVATE, PUBLIC.
+  - role: (Optional) The role of subnetwork. Possible values are: ACTIVE, INACTIVE.
+  - secondary_ip_range: (Optional) List of secondary ip ranges to be used in this subnetwork.
+  - private_ipv6_google_access: (Optional) The private ipv6 google access type. Possible values are: OFF, ON.
+  - private_ip_google_access: (Optional) The private ip google access type. Default is false.
+  - region: The region this subnetwork belongs to.
+  - log_config: (Optional) List of log config for a subnetwork. Each element must contain the following attributes:
+    - aggregation_interval: (Optional) The aggregation interval for flow logs. Default is 5 seconds.
+    - flow_sampling: (Optional) The flow sampling for flow logs. Default is 0.5.
+    - metadata: (Optional) The metadata for flow logs. Possible values are: INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, CUSTOM_METADATA.
+    - metadata_fields: (Optional) The metadata fields for flow logs. Required if metadata is CUSTOM_METADATA.
+    - filter_expr: (Optional) The filter expression for flow logs.
+  - stack_type: (Optional) The stack type of the subnetwork. Possible values are: IPV4_ONLY, IPV4_IPV6.
+  - ipv6_access_type: (Optional) The ipv6 access type of the subnetwork. Possible values are: OFF, ON.
+  - external_ipv6_prefix: (Optional) The external ipv6 prefix of the subnetwork.
+  - allow_subnet_cidr_routes_overlap: (Optional) Whether to allow subnet cidr routes overlap. Default is false.
+  _EOT
+  default     = {}
+}

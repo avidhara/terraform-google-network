@@ -18,3 +18,15 @@ output "self_link" {
   value       = try(google_compute_network.this[0].self_link, null)
 }
 
+
+### Subnet Outputs ###
+
+output "subnet_ids" {
+  value = {
+    for subnet_key, subnet in google_compute_subnetwork.this :
+    subnet.name => {
+      id              = subnet.id
+      gateway_address = subnet.gateway_address
+    }
+  }
+}
