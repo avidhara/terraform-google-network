@@ -1,0 +1,6 @@
+module "vpc" {
+  source         = "../../"
+  name           = "terraform-vpc"
+  subnets        = var.subnets
+  firewall_rules = var.firewall_rules
+}
