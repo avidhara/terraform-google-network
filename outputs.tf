@@ -30,3 +30,21 @@ output "subnet_ids" {
     }
   }
 }
+
+### Firewall Outputs ###
+output "firewall_id" {
+  description = "an identifier for the resource with format projects/{{project}}/global/firewalls/{{name}}"
+  value       = try(values(google_compute_firewall.this)[*].id, [])
+}
+
+### Router Outputs ###
+output "router_id" {
+  description = "an identifier for the resource with format projects/{{project}}/regions/{{region}}/routers/{{name}}"
+  value       = try(google_compute_router.this[0].id, null)
+}
+
+### NAT Outputs ###
+output "nat_id" {
+  description = "an identifier for the resource with format projects/{{project}}/regions/{{region}}/routers/{{router_name}}/nat"
+  value       = try(google_compute_router_nat.this[0].id, null)
+}

@@ -111,9 +111,12 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_firewall_id"></a> [firewall\_id](#output\_firewall\_id) | an identifier for the resource with format projects/{{project}}/global/firewalls/{{name}} |
 | <a name="output_gateway_ipv4"></a> [gateway\_ipv4](#output\_gateway\_ipv4) | The gateway address for default routing out of the network. This value is selected by GCP. |
 | <a name="output_id"></a> [id](#output\_id) | an identifier for the resource with format projects/{{project}}/global/networks/{{name}} |
+| <a name="output_nat_id"></a> [nat\_id](#output\_nat\_id) | an identifier for the resource with format projects/{{project}}/regions/{{region}}/routers/{{router\_name}}/nat |
 | <a name="output_numeric_id"></a> [numeric\_id](#output\_numeric\_id) | The unique identifier for the resource. This identifier is defined by the server. |
+| <a name="output_router_id"></a> [router\_id](#output\_router\_id) | an identifier for the resource with format projects/{{project}}/regions/{{region}}/routers/{{name}} |
 | <a name="output_self_link"></a> [self\_link](#output\_self\_link) | The URI of the created resource. |
 | <a name="output_subnet_ids"></a> [subnet\_ids](#output\_subnet\_ids) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
