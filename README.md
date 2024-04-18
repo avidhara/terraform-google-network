@@ -1,3 +1,4 @@
+[![Static security analysis for Terraform](https://github.com/avidhara/terraform-google-network/actions/workflows/checkov.yml/badge.svg)](https://github.com/avidhara/terraform-google-network/actions/workflows/checkov.yml)
 # Terraform module for Google Cloud Network
 
 ## Usage
